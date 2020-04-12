@@ -1,1 +1,22 @@
 __pycache__/
+*.swp
+*.pyc
+.DS_Store
+/.coverage
+/dist/
+/build/
+/MANIFEST
+/wagtail.egg-info/
+/docs/_build/
+/.tox/
+/venv
+/node_modules/
+npm-debug.log*
+*.idea/
+/*.egg/
+/.cache/
+/.pytest_cache/
+*.sqlite3
+
+### vscode
+.vscode
