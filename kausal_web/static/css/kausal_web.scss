@@ -89,3 +89,15 @@ body, html {
 .content-section {
     background-color: $secondary;
 }
+
+.features-section {
+    padding: 5rem 0;
+}
+
+.feature {
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto 1rem;
+    }
+}

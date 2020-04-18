@@ -1,0 +1,15 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="features">
+    <div class="card-deck">
+    {% for block in value %}
+            <div class="card">
+                {% image block.image width-320 class="card-img-top" %}
+                <div class="card-body">
+                    <h3>{{ block.title }}</h3>
+                    {{ block.description }}
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+</div>

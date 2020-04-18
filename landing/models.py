@@ -30,9 +30,8 @@ class LandingPage(TranslatablePage):
                     ('image', ImageChooserBlock()),
                     ('description', blocks.RichTextBlock()),
                 ],
-                icon='doc-full-inverse',
-                template='landing/blocks/feature.html')
-            , icon='table')),
+                icon='doc-full-inverse')
+            , icon='table', template='landing/blocks/features.html')),
         ], template='landing/blocks/features_list.html')),
     ], blank=True)
 

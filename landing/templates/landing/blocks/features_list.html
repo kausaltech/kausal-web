@@ -1,8 +1,8 @@
 {% load wagtailcore_tags %}
 
-<div class="features-list" id="{{ value.in_navigation | slugify }}">
-    <hr />
-    <h2>{{ value.headline }}</h2>
-    {% include_block value.bound_blocks.features %}
-    <hr />
-</div>
+<section class="features-section" id="{{ value.in_navigation | slugify }}">
+    <div class="container">
+        <h2>{{ value.headline }}</h2>
+        {% include_block value.bound_blocks.features %}
+    </div>
+</section>
