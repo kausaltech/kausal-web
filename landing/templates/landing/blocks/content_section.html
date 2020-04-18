@@ -1,5 +1,5 @@
 {% load wagtailimages_tags %}
-<div class="content-section">
+<div class="content-section" id="{{ value.in_navigation | slugify }}">
     {% image value.section_image width-400 %}
     <p>{{ value.content }}</p>
 </div>

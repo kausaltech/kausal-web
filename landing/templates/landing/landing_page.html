@@ -30,6 +30,9 @@
 
         <h1>Kausal</h1>
         <hr />
+        {% for block in page.body %}
+            <div><a href="#{{ block.value.in_navigation | slugify }}">{{ block.value.in_navigation }}</a></div>
+        {% endfor %}
         {% render_language_selector page %}
         <hr />
         {% include_block page.body %}

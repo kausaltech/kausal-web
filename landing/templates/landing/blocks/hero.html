@@ -1,6 +1,6 @@
 {% load wagtailimages_tags %}
 
-<div class="hero">
+<div class="hero" id="{{ value.in_navigation | slugify }}">
     {% image value.hero_image width-400 %}
     <h1>{{ value.headline }}</h1>
     <h3>{{ value.lead }}</h3>
