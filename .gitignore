@@ -5,6 +5,7 @@ __pycache__/
 /.coverage
 /dist/
 /build/
+/media/
 /MANIFEST
 /wagtail.egg-info/
 /docs/_build/
