@@ -1,0 +1,8 @@
+{% load wagtailcore_tags %}
+
+<div class="features-list">
+    <hr />
+    <h2>{{ value.headline }}</h2>
+    {% include_block value.bound_blocks.features %}
+    <hr />
+</div>

@@ -15,12 +15,12 @@ class LandingPage(TranslatablePage):
             ('lead', blocks.CharBlock(required=False)),
             ('content', blocks.RichTextBlock()),
             ('hero_image', ImageChooserBlock(required=False)),
-        ], icon='image')),
+        ], icon='image', template='landing/blocks/hero.html')),
         ('content_section', blocks.StructBlock([
             ('in_navigation', blocks.CharBlock(required=False, help_text="Fill if you want this section added in page navigation",)),
             ('content', blocks.RichTextBlock()),
             ('section_image', ImageChooserBlock(required=False))
-        ], icon='doc-full-inverse')),
+        ], icon='doc-full-inverse', template='landing/blocks/content_section.html')),
         ('features_list', blocks.StructBlock([
             ('in_navigation', blocks.CharBlock(required=False, help_text="Fill if you want this section added in page navigation",)),
             ('headline', blocks.CharBlock()),
@@ -29,9 +29,11 @@ class LandingPage(TranslatablePage):
                     ('title', blocks.CharBlock()),
                     ('image', ImageChooserBlock()),
                     ('description', blocks.RichTextBlock()),
-                ], icon='doc-full-inverse')
+                ],
+                icon='doc-full-inverse',
+                template='landing/blocks/feature.html')
             , icon='table')),
-        ])),
+        ], template='landing/blocks/features_list.html')),
     ], blank=True)
 
     content_panels = Page.content_panels + [

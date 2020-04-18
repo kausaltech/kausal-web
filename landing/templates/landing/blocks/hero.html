@@ -1,0 +1,8 @@
+{% load wagtailimages_tags %}
+
+<div class="hero">
+    {% image value.hero_image width-400 %}
+    <h1>{{ value.headline }}</h1>
+    <h3>{{ value.lead }}</h3>
+    <p>{{ value.content }}</p>
+</div>
