@@ -7,7 +7,7 @@
         {% get_language_info for current_page.language.code as lang %}
         {{ lang.code }}
     </a>
-    <div class="dropdown-menu dropdown-menu-lg-right" style="min-width: 100px;" aria-labelledby="navbarDropdown">
+    <div class="dropdown-menu dropdown-menu-md-right" style="min-width: 100px;" aria-labelledby="navbarDropdown">
         {% for language, page in translations.items %}
         {% get_language_info for language.code as lang %}
             <a class="dropdown-item" href="{{ page.url }}">{{ lang.name_local }}</a>

@@ -1,8 +1,16 @@
 {% load wagtailimages_tags %}
 
-<div class="hero" id="{{ value.in_navigation | slugify }}">
-    {% image value.hero_image width-400 %}
-    <h1>{{ value.headline }}</h1>
-    <h3>{{ value.lead }}</h3>
-    <p>{{ value.content }}</p>
-</div>
+<section class="site-hero" id="{{ value.in_navigation | slugify }}">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-md-6 order-md-2 mb-3 text-center">
+                {% image value.hero_image width-400 %}
+            </div>
+            <div class="col-md-6 order-md-1 py-5">
+                <h1>{{ value.headline }}</h1>
+                <h3>{{ value.lead }}</h3>
+                <p>{{ value.content }}</p>
+            </div>
+        </div>
+    </div>
+</section>

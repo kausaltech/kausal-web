@@ -33,13 +33,13 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-md navbar-light bg-light py-3">
             <a class="navbar-brand" href="#">Kausal</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <ul class="navbar-nav mr-auto mt-2 mt-md-0">
                     {% for block in page.body %}
                         <li class="nav-item">
                             <a class="nav-link" href="#{{ block.value.in_navigation | slugify }}">{{ block.value.in_navigation }}</a>
@@ -49,8 +49,6 @@
                 {% render_language_selector page %}
             </div>
         </nav>
-
-        <hr />
         {% include_block page.body %}
 
         {# Global javascript #}
