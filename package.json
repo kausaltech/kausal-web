@@ -1,0 +1,12 @@
+{
+  "name": "kausal-web",
+  "version": "1.0.0",
+  "description": "Kausal Web Site",
+  "main": "index.js",
+  "repository": "https://github.com/kausaltech/kausal-web.git",
+  "author": "tero.tikkanen@kausal.tech",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "4.3.1"
+  }
+}

@@ -8,19 +8,25 @@ asgiref==3.2.7            # via django
 beautifulsoup4==4.6.0     # via wagtail
 certifi==2019.11.28       # via requests
 chardet==3.0.4            # via requests
+django-appconf==1.0.4     # via django-compressor
+django-compressor==2.4    # via -r requirements.in
 django-modelcluster==5.0.1  # via wagtail
+django-sass-processor==0.8  # via -r requirements.in
 django-taggit==1.2.0      # via wagtail
 django-treebeard==4.3.1   # via wagtail
-django==3.0.5             # via django-taggit, django-treebeard, djangorestframework, wagtail
+django==3.0.5             # via django-appconf, django-taggit, django-treebeard, djangorestframework, wagtail
 djangorestframework==3.11.0  # via wagtail
 draftjs-exporter==2.1.7   # via wagtail
 html5lib==1.0.1           # via wagtail
 idna==2.9                 # via requests
 l18n==2018.5              # via wagtail
+libsass==0.19.4           # via -r requirements.in
 pillow==6.2.2             # via wagtail
 pytz==2019.3              # via django, django-modelcluster, l18n
+rcssmin==1.0.6            # via django-compressor
 requests==2.23.0          # via wagtail
-six==1.14.0               # via html5lib, l18n
+rjsmin==1.1.0             # via django-compressor
+six==1.14.0               # via django-compressor, html5lib, l18n, libsass
 sqlparse==0.3.1           # via django
 unidecode==1.1.1          # via wagtail
 urllib3==1.25.8           # via requests

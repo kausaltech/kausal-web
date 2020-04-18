@@ -1,4 +1,4 @@
-{% load static wagtailuserbar wagtailtrans_tags wagtailcore_tags %}
+{% load static wagtailuserbar wagtailtrans_tags wagtailcore_tags sass_tags %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -18,26 +18,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/kausal_web.css' %}">
+
+        <link href="{% sass_src 'css/kausal_web.scss' %}" rel="stylesheet" type="text/css" />
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
+<script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
-        <h1>Kausal</h1>
-        <hr />
-        {% for block in page.body %}
-            <div><a href="#{{ block.value.in_navigation | slugify }}">{{ block.value.in_navigation }}</a></div>
-        {% endfor %}
-        {% render_language_selector page %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Kausal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% for block in page.body %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#{{ block.value.in_navigation | slugify }}">{{ block.value.in_navigation }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div>
+                {% render_language_selector page %}
+            </div>
+        </div>
+        </nav>
+
         <hr />
         {% include_block page.body %}
 
         {# Global javascript #}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script type="text/javascript" src="{% static 'js/kausal_web.js' %}"></script>
 
         {% block extra_js %}
