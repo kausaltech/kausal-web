@@ -7016,4 +7016,9 @@ body, html {
   height: auto;
   margin: 0 auto 1rem; }
 
+.site-footer {
+  padding: 5rem 0;
+  background-color: #343a40;
+  color: #f8f9fa; }
+
 /*# sourceMappingURL=kausal_web.css.map */
