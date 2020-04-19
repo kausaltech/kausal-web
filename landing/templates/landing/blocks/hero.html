@@ -3,14 +3,22 @@
 <section class="site-hero" id="{{ value.in_navigation | slugify }}">
     <div class="container pb-5">
         <div class="row">
-            <div class="col-md-6 order-md-2 mb-3 text-center">
-                {% image value.hero_image width-320 %}
+            <div class="col-7 col-sm-6 col-lg-5 offset-lg-1 order-md-2 mb-3 text-center">
+                {% image value.hero_image fill-900x1200 as temp_img %}
+                <img src="{{ temp_img.url }}" alt="{{ temp_img.alt }}"
+                                class="hero-image img-fluid align-top" />
             </div>
-            <div class="col-md-6 order-md-1 py-5">
-                <h1>{{ value.headline }}</h1>
-                <h3>{{ value.lead }}</h3>
-                <p>{{ value.content }}</p>
+            <div class="col-md-6 order-md-1">
+                <div class="hero-content py-2 my-3 py-md-5 my-md-5">
+                    <p class="pre-lead">{{ value.lead }}</p>
+                    <h1>{{ value.headline }}</h1>
+                    <p>{{ value.content }}</p>
+                    {% if value.cta_link %}
+                        <a class="btn btn-secondary mt-3" href="{{ value.cta_link}}">{{ value.cta_button }}</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
+
     </div>
 </section>

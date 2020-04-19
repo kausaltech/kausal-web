@@ -1,6 +1,7 @@
-{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
-<section class="features-section" id="{{ value.in_navigation | slugify }}">
+<section class="contact-section py-5" id="{{ value.in_navigation | slugify }}">
+    {% image value.section_image width-400 %}
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
@@ -9,6 +10,5 @@
                 {{ value.content }}
             </div>
         </div>
-        {% include_block value.bound_blocks.features %}
     </div>
 </section>

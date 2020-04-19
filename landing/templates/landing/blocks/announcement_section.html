@@ -1,0 +1,24 @@
+{% load wagtailimages_tags %}
+
+<section class="announcement-section" id="{{ value.in_navigation | slugify }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-10 offset-lg-1">
+                <div class="announcement-banner p-5">
+                    <div class="row">
+                        {% image value.section_image width-400 as tmp_photo %}
+                        <div class="col-12 col-md-4 justify-content-center d-flex">
+                                <img src="{{ tmp_photo.url }}" alt="{{ tmp_photo.alt }}"
+                                class="img-fluid announcement-image align-middle mb-4 w-sm-50" />
+                        </div>
+                        <div class="col-12 col-md-8 announcement-content"> 
+                            <h2>{{ value.headline }}</h2>
+                            <p class="lead">{{ value.lead }}</p>
+                            {{ value.content }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -6978,6 +6978,9 @@ a.text-dark:hover, a.text-dark:focus {
 body, html {
   font-family: 'DM Sans', sans-serif; }
 
+.navbar {
+  z-index: 1020; }
+
 .navbar-brand {
   font-weight: 700;
   letter-spacing: .5px; }
@@ -7002,10 +7005,29 @@ body, html {
 .site-hero {
   background-color: #274E13;
   color: #f8f9fa; }
+  .site-hero .pre-lead {
+    font-size: 1.5rem;
+    line-height: 1.1; }
   .site-hero h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: 2rem;
     color: #D9EAD3; }
-
-.content-section {
+    @media (min-width: 768px) {
+      .site-hero h1 {
+        font-size: 2.5rem; } }
+    @media (min-width: 992px) {
+      .site-hero h1 {
+        font-size: 3rem; } }
+    @media (min-width: 1200px) {
+      .site-hero h1 {
+        font-size: 3.5rem; } }
+  .site-hero .hero-image {
+    margin-top: -3rem; }
+    @media (min-width: 768px) {
+      .site-hero .hero-image {
+        margin-top: 0; } }
+.contact-section {
   background-color: #D9EAD3; }
 
 .features-section {
@@ -7016,9 +7038,32 @@ body, html {
   height: auto;
   margin: 0 auto 1rem; }
 
+.announcement-section {
+  background-color: #D9EAD3;
+  padding: 6rem 0; }
+  .announcement-section .announcement-banner {
+    border-radius: 6px;
+    background-color: #D9EAD3;
+    color: #343a40;
+    box-shadow: 12px 12px 16px rgba(39, 78, 19, 0.1), -12px -12px 12px rgba(248, 249, 250, 0.25); }
+  .announcement-section .announcement-image {
+    max-height: 200px; }
+  .announcement-section .announcement-content {
+    margin-bottom: -1em; }
+
 .site-footer {
   padding: 5rem 0;
   background-color: #343a40;
   color: #f8f9fa; }
+
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  box-shadow: 3px 3px 10px rgba(39, 78, 19, 0.15); }
+  .back-to-top svg {
+    margin-bottom: .25rem; }
 
 /*# sourceMappingURL=kausal_web.css.map */

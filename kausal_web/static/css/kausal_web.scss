@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap');
-//#274E13
 
 // Toned down Bootstrap palette
 $blue:    #4E80A6;
@@ -45,6 +44,10 @@ body, html {
     font-family: 'DM Sans', sans-serif;
 }
 
+.navbar {
+    z-index: $zindex-sticky;
+}
+
 .navbar-brand {
     font-weight: 700;
     letter-spacing: .5px;
@@ -79,14 +82,40 @@ body, html {
     background-color: $primary;
     color: $light;
 
-    h1 {
-        color: $secondary;
+    .pre-lead {
+        font-size: 1.5rem;
+        line-height: 1.1;
     }
+
+    h1 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+        color: $secondary;
+        @include media-breakpoint-up(md) {
+            font-size: 2.5rem;
+        } 
+        @include media-breakpoint-up(lg) {
+            font-size: 3rem;
+        }
+        @include media-breakpoint-up(xl) {
+            font-size: 3.5rem;
+        }
+    }
+
+    .hero-image {
+        margin-top: -3rem;
+
+        @include media-breakpoint-up(md) {
+            margin-top: 0;
+        } 
+    }
+
 }
 
 // CONTENT
 
-.content-section {
+.contact-section {
     background-color: $secondary;
 }
 
@@ -102,10 +131,52 @@ body, html {
     }
 }
 
+$h1: 12px;
+$h2: -12px;
+$v1: 12px;
+$v2: -12px;
+$blur1: 16px;
+$blur2: 12px;
+$color-light: rgba($light, 0.25);
+$color-dark: rgba($primary, 0.10);
+
+
+.announcement-section {
+    background-color: $secondary;
+    padding: 6rem 0;
+
+    .announcement-banner {
+        border-radius: 6px;
+        background-color: $secondary;
+        color: $dark;
+        box-shadow: $h1 $v1 $blur1 $color-dark, 
+                    $h2 $v2 $blur2 $color-light;
+    }
+
+    .announcement-image {
+        max-height: 200px;
+    }
+
+    .announcement-content {
+        margin-bottom: -1em;
+    }
+}
 // FOOTER
 
 .site-footer {
     padding: 5rem 0;
     background-color: $dark;
     color: $light;
+}
+
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
+    box-shadow: 3px 3px 10px rgba($primary, .15);
+    svg {
+        margin-bottom: .25rem;
+    }
 }

@@ -1,8 +1,25 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="features">
-    <div class="card-deck">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
     {% for block in value %}
+    <li data-target="#carouselExampleIndicators"
+        data-slide-to={{ forloop.counter0 }}
+        class="
+            {% if forloop.counter == 1 %}
+                active
+            {% endif %}
+        ">
+    </li>
+    {% endfor %}
+  </ol>
+  <div class="carousel-inner">
+    {% for block in value %}
+        <div class="carousel-item
+            {% if forloop.counter == 1 %}
+                active
+            {% endif %}
+            ">
             <div class="card">
                 {% image block.image width-320 class="card-img-top" %}
                 <div class="card-body">
@@ -10,6 +27,15 @@
                     {{ block.description }}
                 </div>
             </div>
+        </div>
     {% endfor %}
-    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
