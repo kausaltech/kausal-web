@@ -84,7 +84,7 @@ class LandingPage(TranslatablePage):
                     ('description', blocks.RichTextBlock(required=False)),
                 ],
                 icon='user')
-            ,template='landing/blocks/team_member.html')),
+            ,template='landing/blocks/team_member.html', required=False)),
         ], icon='group', template='landing/blocks/team_members.html',
         help_text="Section for displaying a list of persons")),
         ## Announcement Section

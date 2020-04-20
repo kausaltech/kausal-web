@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+
+<section class="team-section" id="{{ value.in_navigation | slugify }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-10 col-lg-7">
+                <h2 class="section-header">{{ value.headline }}</h2>
+                <p class="lead mb-4">{{ value.lead }}</p>
+                <div class="mb-2">{{ value.content }}</div>
+            </div>
+        </div>
+        {% include_block value.bound_blocks.team_members %}
+    </div>
+</section>
