@@ -3,12 +3,12 @@
 <section class="features-section" id="{{ value.in_navigation | slugify }}">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-                <h2>{{ value.headline }}</h2>
-                <p class="lead">{{ value.lead }}</p>
-                {{ value.content }}
+            <div class="col-12 col-md-10 offset-md-1 col-lg-7 offset-lg-1">
+                <h2 class="section-header">{{ value.headline }}</h2>
+                <p class="lead mb-4">{{ value.lead }}</p>
+                <div class="mb-2">{{ value.content }}</div>
             </div>
         </div>
-        {% include_block value.bound_blocks.features %}
     </div>
+    {% include_block value.bound_blocks.features %}
 </section>
