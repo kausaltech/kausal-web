@@ -1,0 +1,47 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="features my-5">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      {% for block in value %}
+      <li data-target="#carouselExampleIndicators"
+          data-slide-to={{ forloop.counter0 }}
+          class="bg-dark 
+              {% if forloop.counter == 1 %}
+                  active
+              {% endif %}
+          ">
+      </li>
+      {% endfor %}
+    </ol>
+    <div class="carousel-inner">
+      {% for block in value %}
+          <div class="carousel-item
+              {% if forloop.counter == 1 %}
+                  active
+              {% endif %}
+              ">
+              <div class="container mt-5">
+                <div class="row">
+                    <div class="col-6 text-center">
+                      {% image block.image width-600 class="img-fluid "%}
+                    </div>
+                    <div class="col-6 feature-content">
+                        <h3>{{ block.title }}</h3>
+                        {{ block.description }}
+                    </div>
+                </div>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon bg-primary" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
