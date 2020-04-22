@@ -9,6 +9,10 @@
                 <div class="mb-2">{{ value.content }}</div>
             </div>
         </div>
-        {% include_block value.bound_blocks.team_members %}
+        <div class="row">
+            <div class="col-lg-10 offset-lg-2">
+                {% include_block value.bound_blocks.team_members %}
+            </div>
+        </div>
     </div>
 </section>

@@ -3,13 +3,13 @@
 <section class="site-hero" id="{{ value.in_navigation | slugify }}">
     <div class="container pb-5">
         <div class="row">
-            <div class="col-7 col-sm-6 col-lg-5 offset-lg-1 order-md-2 mb-3 text-center">
-                {% image value.hero_image fill-900x1200 as temp_img %}
+            <div class="col-6 col-sm-5 col-lg-4 col-xl-4 offset-md-1 order-md-2 mb-3 text-center">
+                {% image value.hero_image fill-900x1800 as temp_img %}
                 <img src="{{ temp_img.url }}" alt="{{ temp_img.alt }}"
                                 class="hero-image img-fluid align-top" />
             </div>
             <div class="col-md-6 order-md-1">
-                <div class="hero-content py-2 my-3 py-lg-5 my-md-5">
+                <div class="hero-content py-2 my-3 pt-lg-5 my-md-5">
                     <p class="pre-lead">{{ value.lead }}</p>
                     <h1>{{ value.headline }}</h1>
                     <p>{{ value.content }}</p>
