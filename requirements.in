@@ -4,3 +4,5 @@ libsass
 django-compressor
 django-sass-processor
 django-environ
+psycopg2-binary
+gunicorn
