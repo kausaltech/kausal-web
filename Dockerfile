@@ -1,6 +1,6 @@
 # Use an official Python runtime as a parent image
 FROM python:3.7
-LABEL maintainer="hello@wagtail.io"
+LABEL maintainer="info@kausal.tech"
 
 # Set environment varibles
 ENV PYTHONUNBUFFERED 1

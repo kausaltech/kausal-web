@@ -3,3 +3,4 @@ wagtailtrans
 libsass
 django-compressor
 django-sass-processor
+django-environ

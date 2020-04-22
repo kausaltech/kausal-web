@@ -6,10 +6,11 @@
 #
 asgiref==3.2.7            # via django
 beautifulsoup4==4.6.0     # via wagtail
-certifi==2019.11.28       # via requests
+certifi==2020.4.5.1       # via requests
 chardet==3.0.4            # via requests
 django-appconf==1.0.4     # via django-compressor
 django-compressor==2.4    # via -r requirements.in
+django-environ==0.4.5     # via -r requirements.in
 django-modelcluster==5.0.1  # via wagtail
 django-sass-processor==0.8  # via -r requirements.in
 django-taggit==1.2.0      # via wagtail
@@ -29,7 +30,7 @@ rjsmin==1.1.0             # via django-compressor
 six==1.14.0               # via django-compressor, html5lib, l18n, libsass
 sqlparse==0.3.1           # via django
 unidecode==1.1.1          # via wagtail
-urllib3==1.25.8           # via requests
+urllib3==1.25.9           # via requests
 wagtail==2.8.1            # via -r requirements.in
 wagtailtrans==2.1         # via -r requirements.in
 webencodings==0.5.1       # via html5lib
