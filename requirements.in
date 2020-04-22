@@ -5,4 +5,5 @@ django-compressor
 django-sass-processor
 django-environ
 psycopg2-binary
-gunicorn
+uwsgi
+sentry-sdk

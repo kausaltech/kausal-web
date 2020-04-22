@@ -186,15 +186,19 @@ STATICFILES_DIRS = [
 # See https://docs.djangoproject.com/en/3.0/ref/contrib/staticfiles/#manifeststaticfilesstorage
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+STATIC_URL = env('STATIC_URL')
+MEDIA_URL = env('MEDIA_URL')
+STATIC_ROOT = env('STATIC_ROOT')
+MEDIA_ROOT = env('MEDIA_ROOT')
 
 SASS_PROCESSOR_INCLUDE_DIRS = [
     os.path.join(BASE_DIR, 'node_modules'),
 ]
+
+# Reverse proxy stuff
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 # Wagtail settings
 
@@ -205,10 +209,6 @@ WAGTAIL_SITE_NAME = "kausal_web"
 BASE_URL = env('BASE_URL')
 
 WAGTAILTRANS_SYNC_TREE = True
-
-# Reverse proxy stuff
-USE_X_FORWARDED_HOST = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 SENTRY_DSN = env('SENTRY_DSN')
 
@@ -230,15 +230,12 @@ LOGGING = {
             'class': 'logging.NullHandler',
         },
         'console': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
         },
     },
     'loggers': {
-        'gunicorn': {
-            'level': 'INFO',
-        },
         '': {
             'level': 'INFO',
             'handlers': ['console'],
@@ -281,3 +278,14 @@ if not locals().get('SECRET_KEY', ''):
 if 'DATABASES' in locals():
     if DATABASES['default']['ENGINE'] in ('django.db.backends.postgresql', 'django.contrib.gis.db.backends.postgis'):
         DATABASES['default']['CONN_MAX_AGE'] = 600
+
+
+import sentry_sdk  # noqa
+from sentry_sdk.integrations.django import DjangoIntegration  # noqa
+
+
+sentry_sdk.init(
+    dsn=SENTRY_DSN,
+    integrations=[DjangoIntegration()],
+    send_default_pii=True
+)
