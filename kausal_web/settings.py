@@ -224,6 +224,40 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SENTRY_DSN = env('SENTRY_DSN')
 
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s %(levelname)s %(name)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(asctime)s %(levelname)s %(name)s %(message)s'
+        },
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+    },
+    'loggers': {
+        'gunicorn': {
+            'level': 'INFO',
+        },
+        '': {
+            'level': 'INFO',
+            'handlers': ['console'],
+            'propagate': False,
+        }
+    },
+}
+
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
