@@ -1,7 +1,9 @@
-{% load static wagtailuserbar wagtailtrans_tags wagtailcore_tags sass_tags %}
+{% load static wagtailuserbar wagtailtrans_tags wagtailcore_tags sass_tags i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -15,6 +17,13 @@
             {% endblock %}
         </title>
         <meta name="description" content="" />
+        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
+        <meta property="og:description" content="{{ self.search_description }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ page.get_site.root_url }}{% pageurl self %}" />
+        {# TODO: Add image#}
+        <meta property="og:image" content="" />
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
