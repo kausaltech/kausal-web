@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+
+<section class="testimonials-section" id="{{ value.in_navigation | slugify }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-10 col-lg-8">
+                <h2 class="section-header">{{ value.headline }}</h2>
+                <p class="lead">{{ value.lead }}</p>
+                <div class="">{{ value.content }}</div>
+            </div>
+        </div>
+    </div>
+    {% include_block value.bound_blocks.testimonials %}
+</section>

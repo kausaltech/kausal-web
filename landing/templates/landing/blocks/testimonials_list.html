@@ -1,7 +1,11 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="features my-5">
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div class="testimonials">
+  <div id="carouselExampleIndicators"
+    class="carousel slide"
+    data-ride="carousel"
+    data-interval="false"
+    >
     <ol class="carousel-indicators">
       {% for block in value %}
       <li data-target="#carouselExampleIndicators"
@@ -21,16 +25,24 @@
                   active
               {% endif %}
               ">
-              <div class="container mt-5">
-                <div class="row">
-                    <div class="col-6 text-center">
-                      {% image block.image width-600 class="img-fluid "%}
+              <div class="container">
+                <blockquote class="row">
+                    <div class="col-12 col-md-9 col-lg-8 offset-lg-1">
+                        <div class="testimonial-content">
+                          {{ block.content }}
+                        </div>
                     </div>
-                    <div class="col-6 feature-content">
-                        <h3>{{ block.title }}</h3>
-                        {{ block.description }}
-                    </div>
-                </div>
+                    <footer class="col-7 offset-5 col-md-3 offset-md-0 col-lg-3 d-flex flex-row flex-md-column justify-content-end">
+                        <div class="testimonial-source-image">
+                            {% image block.image width-100 %}
+                        </div>
+                        <div class="testimonial-source-details">
+                            <p><strong>{{ block.name }}</strong></p>
+                            <p>{{ block.title }}</p>
+                            <p><em>{{ block.organization }}</em></p>
+                        </div>
+                    </footer>
+                </blockquote>
               </div>
           </div>
       {% endfor %}

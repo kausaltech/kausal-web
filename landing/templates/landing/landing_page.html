@@ -62,9 +62,11 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
                         {% for block in page.body %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#{{ block.value.in_navigation | slugify }}">{{ block.value.in_navigation }}</a>
-                            </li>
+                            {% if block.value.in_navigation %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#{{ block.value.in_navigation | slugify }}">{{ block.value.in_navigation }}</a>
+                                </li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                     {% render_language_selector page %}
