@@ -1,7 +1,9 @@
-{% load static wagtailuserbar wagtailtrans_tags wagtailcore_tags sass_tags %}
+{% load static wagtailuserbar wagtailtrans_tags wagtailcore_tags sass_tags i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -14,7 +16,25 @@
                 {% endwith %}
             {% endblock %}
         </title>
-        <meta name="description" content="" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static 'icons/site.webmanifest' %}">
+        <link rel="mask-icon" href="{% static 'icons/safari-pinned-tab.svg' %}" color="#4d6a52">
+        <link rel="shortcut icon" href="{% static 'icons/favicon.ico' %}">
+        <meta name="msapplication-TileColor" content="#4d6a52">
+        <meta name="msapplication-config" content="{% static 'icons/browserconfig.xml' %}">
+        <meta name="theme-color" content="#d9ead3">
+        
+        <meta name="description" content="{{ self.search_description }}" />
+        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
+        <meta property="og:description" content="{{ self.search_description }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ page.get_site.root_url }}{% pageurl self %}" />
+        <meta property="og:image" content="{% static 'icons/default-social.jpg' %}" />
+        <meta property="og:image" content="" />
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
@@ -42,9 +62,11 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
                         {% for block in page.body %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#{{ block.value.in_navigation | slugify }}">{{ block.value.in_navigation }}</a>
-                            </li>
+                            {% if block.value.in_navigation %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#{{ block.value.in_navigation | slugify }}">{{ block.value.in_navigation }}</a>
+                                </li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                     {% render_language_selector page %}

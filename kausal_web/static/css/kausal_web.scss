@@ -53,13 +53,24 @@ body, html {
     box-shadow: 0 3px 10px rgba(#1f2b19, 0.10);
 }
 
-.navbar-brand {
+.navbar-light .navbar-brand {
+    padding-top: 0.25rem;
+    margin-right: 2rem;
     font-weight: 700;
     letter-spacing: .5px;
+    color: $primary;
 }
 
 .navbar-toggler {
     border: 0;
+}
+
+.navbar-nav {
+    margin-bottom: 1rem;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: 0;
+    }
 }
 
 .language-dropdown {
@@ -178,19 +189,6 @@ body, html {
     border-radius: 50%;
 }
 
-.features-section {
-    padding: 5rem 0;
-    background-color: $light;
-    color: $primary;
-}
-
-.feature {
-    img {
-        max-width: 100%;
-        height: auto;
-        margin: 0 auto 1rem;
-    }
-}
 
 $h1: 12px;
 $h2: -12px;
@@ -229,14 +227,18 @@ $color-dark: rgba($primary, 0.07);
 
 // FEATURES
 
-.carousel-indicators {
-    bottom: -4rem;
+.features-section {
+    padding: 5rem 0;
+    background-color: $light;
+    color: $primary;
 }
 
-.carousel-control-next-icon, .carousel-control-prev-icon {
-    padding: 1.25rem;
-    border-radius: 8px;
-    background-size: 50%;
+.feature {
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto 1rem;
+    }
 }
 
 .feature-content {
@@ -299,6 +301,87 @@ $color-dark: rgba($primary, 0.07);
             @extend .order-sm-3;
         }
     }
+
+// TESTIMONIALS
+
+.testimonials-section {
+    padding: 5rem 0;
+    background-color: $light;
+    color: $primary;
+}
+
+.testimonials {
+
+    blockquote {
+        margin-top: 1rem;
+    }
+
+    blockquote footer {
+        margin-bottom: 1rem;
+        img {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            margin: 0 1rem .5rem 0;
+        }
+    }
+
+    .carousel{
+        padding-top: 2rem;
+    }
+}
+
+.testimonial-content {
+    position: relative;
+    overflow: visible;
+    padding: 1.25rem 1.5rem .75rem;
+    margin-bottom: 1rem;
+    margin-left: 1.5rem;
+    border-radius: .75rem;
+    font-size: 1.15rem;
+    background-color: $secondary;
+
+    &:before, &:after {
+        position: absolute;
+        font-size: 6rem;
+        line-height: 1rem;
+    }
+    &:before {
+        content: open-quote;
+        top: 3rem;
+        left: -1.25rem;
+    }
+    &:after {
+        content: close-quote;
+        right: -0.75rem;
+        bottom: 0;
+    }
+}
+
+.testimonial-source-details {
+    font-size: 0.8rem;
+    line-height: 1.25;
+
+    p {
+        margin-bottom: .25em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.carousel-indicators {
+    bottom: -4rem;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    padding: 1.25rem;
+    border-radius: 8px;
+    background-size: 50%;
+}
+
+
 // FOOTER
 
 .site-footer {
@@ -308,6 +391,7 @@ $color-dark: rgba($primary, 0.07);
 }
 
 .back-to-top {
+    z-index: 2000;
     cursor: pointer;
     position: fixed;
     bottom: 20px;

@@ -1,4 +1,4 @@
-{% load wagtailimages_tags %}
+{% load wagtailimages_tags wagtailcore_tags %}
 
 <section class="site-hero" id="{{ value.in_navigation | slugify }}">
     <div class="container pb-5">
@@ -10,8 +10,8 @@
             </div>
             <div class="col-md-6 order-md-1">
                 <div class="hero-content py-2 my-3 pt-lg-5 my-md-5">
-                    <p class="pre-lead">{{ value.lead }}</p>
-                    <h1>{{ value.headline }}</h1>
+                    <p class="pre-lead">{{ value.lead|richtext }}</p>
+                    <h1>{{ value.headline|richtext }}</h1>
                     <p>{{ value.content }}</p>
                     {% if value.cta_link %}
                         <a class="btn btn-secondary mt-3" href="{{ value.cta_link}}">{{ value.cta_button }}</a>

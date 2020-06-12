@@ -87,6 +87,27 @@ class LandingPage(TranslatablePage):
             ,template='landing/blocks/team_member.html', required=False)),
         ], icon='group', template='landing/blocks/team_members.html',
         help_text="Section for displaying a list of persons")),
+       ## Testimonials Section
+        ('testimonials_section', blocks.StructBlock([
+            ('in_navigation', blocks.CharBlock(
+                required=False,
+                help_text="Fill if you want this section added in page navigation",)
+            ),
+            ('headline', blocks.CharBlock(required=False)),
+            ('lead', blocks.CharBlock(required=False)),
+            ('content', blocks.RichTextBlock(required=False)),
+            ('testimonials', blocks.ListBlock(
+                blocks.StructBlock([
+                    ('content', blocks.RichTextBlock()),
+                    ('name', blocks.CharBlock()),
+                    ('title', blocks.CharBlock(required=False)),
+                    ('organization', blocks.CharBlock(required=False)),
+                    ('image', ImageChooserBlock()),
+                ],
+                icon='radio-full')
+            , template='landing/blocks/testimonials_list.html')),
+        ], icon='openquote', template='landing/blocks/testimonials_section.html',
+        help_text="Testimonials Section")),
         ## Announcement Section
         ('announcement_section', blocks.StructBlock([
             ('in_navigation', blocks.CharBlock(
