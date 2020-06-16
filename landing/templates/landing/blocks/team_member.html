@@ -2,11 +2,11 @@
 
 <div class="row pt-5">
     {% for block in value %}
-        <div class="col-6 col-md-4 mb-5">
+        <div class="team-member col-6 col-md-4 mb-5">
             {% image block.image fill-400x400 class="team-member-image mb-3 mx-auto "%}
-            <h5 class="text-secondary">{{ block.name }}</h5>
-            <p>{{ block.work_title }}</p>
-            {{ block.description }}
+            <h5 class="team-member-name">{{ block.name }}</h5>
+            <div class="team-member-title">{{ block.work_title }}</div>
+            <div class="team-member-bio">{{ block.description }}</div>
         </div>
     {% endfor %}
 </div>

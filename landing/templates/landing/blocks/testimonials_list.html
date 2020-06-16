@@ -27,19 +27,19 @@
               ">
               <div class="container">
                 <blockquote class="row">
-                    <div class="col-12 col-md-9 col-lg-8 offset-lg-1">
+                    <div class="col-12 col-md-9 col-lg-7 offset-lg-1">
                         <div class="testimonial-content">
                           {{ block.content }}
                         </div>
                     </div>
-                    <footer class="col-7 offset-5 col-md-3 offset-md-0 col-lg-3 d-flex flex-row flex-md-column justify-content-end">
+                    <footer class="col-10 offset-1 col-md-3 offset-md-0 col-lg-3 d-flex flex-row flex-md-column justify-content-end">
                         <div class="testimonial-source-image">
-                            {% image block.image fill-400x400 %}
+                            {% image block.image fill-400x400 title=block.image.title %}
                         </div>
                         <div class="testimonial-source-details">
-                            <p><strong>{{ block.name }}</strong></p>
-                            <p>{{ block.title }}</p>
-                            <p><em>{{ block.organization }}</em></p>
+                            <p class="testimonial-name"><strong>{{ block.name }}</strong></p>
+                            <p>{{ block.title }},</p>
+                            <p>{{ block.organization }}</p>
                         </div>
                     </footer>
                 </blockquote>

@@ -174,7 +174,7 @@ body, html {
 
     a {
         text-decoration: underline;
-        color: $light;
+        color: $secondary;
 
         &:hover {
             text-decoration: none;
@@ -183,12 +183,32 @@ body, html {
     }
 }
 
-.team-member-image {
-    width: 6.5rem;
-    height: 6.5rem;
-    border-radius: 50%;
+.team-member {
+    text-align: center;
 }
 
+.team-member-name {
+    color: $secondary;
+    margin-bottom: .25rem;
+}
+
+.team-member-image {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 4px;
+}
+
+.team-member-title {
+    margin-bottom: .25rem;
+    //font-weight: 600;
+}
+
+.team-member-bio {
+    font-size: 80%;
+    p {
+        margin-bottom: 0;
+    }
+}
 
 $h1: 12px;
 $h2: -12px;
@@ -300,6 +320,10 @@ $color-dark: rgba($primary, 0.07);
         .feature-image {
             @extend .order-sm-3;
         }
+
+        .feature-content {
+            text-align: right;
+        }
     }
 
 // TESTIMONIALS
@@ -319,9 +343,9 @@ $color-dark: rgba($primary, 0.07);
     blockquote footer {
         margin-bottom: 1rem;
         img {
-            width: 5rem;
-            height: 5rem;
-            border-radius: 50%;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 4px;
             margin: 0 1rem .5rem 0;
         }
     }
@@ -334,12 +358,14 @@ $color-dark: rgba($primary, 0.07);
 .testimonial-content {
     position: relative;
     overflow: visible;
-    padding: 1.25rem 1.5rem .75rem;
+    padding: 1.25rem 1.75rem .75rem;
     margin-bottom: 1rem;
     margin-left: 1.5rem;
-    border-radius: .75rem;
-    font-size: 1.15rem;
+    border-radius: 6px;
+    font-size: 1rem;
     background-color: $secondary;
+    box-shadow: $h1 $v1 $blur1 #eeeeee, 
+    $h2 $v2 $blur2 #fafafa;
 
     &:before, &:after {
         position: absolute;
@@ -356,11 +382,19 @@ $color-dark: rgba($primary, 0.07);
         right: -0.75rem;
         bottom: 0;
     }
+
+    @include media-breakpoint-up(md) {
+        font-size: 1.25rem;
+    } 
 }
 
 .testimonial-source-details {
-    font-size: 0.8rem;
+    font-size: 1rem;
     line-height: 1.25;
+
+    .testimonial-name {
+        font-size: 1.25rem;
+    }
 
     p {
         margin-bottom: .25em;
