@@ -1,16 +1,16 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 <div class="testimonials">
-  <div id="carouselExampleIndicators"
+  <div id="isTestimonials"
     class="carousel slide"
     data-ride="carousel"
     data-interval="false"
     >
     <ol class="carousel-indicators">
       {% for block in value %}
-      <li data-target="#carouselExampleIndicators"
+      <li data-target="#isTestimonials"
           data-slide-to={{ forloop.counter0 }}
-          class="bg-dark 
+          class="
               {% if forloop.counter == 1 %}
                   active
               {% endif %}
@@ -47,11 +47,11 @@
           </div>
       {% endfor %}
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#isTestimonials" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#isTestimonials" role="button" data-slide="next">
       <span class="carousel-control-next-icon bg-primary" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>

@@ -20,6 +20,7 @@ $info:        $cyan !default;
 $warning:     $yellow !default;
 $danger:      $red !default;
 $light:     #f7f6f3;
+$medium:     #eceae6;
 $dark:      #302d2b;
 
 $spacer:	            1rem;
@@ -42,15 +43,25 @@ $headings-font-weight:   700;
 
 body, html {
     font-family: 'DM Sans', sans-serif;
-
+    background-color: $primary;
     @include media-breakpoint-up(xl) {
         font-size: 1.1rem;
     }
 }
 
-.navbar {
+.is-hideable {
     z-index: $zindex-sticky;
     box-shadow: 0 3px 10px rgba(#1f2b19, 0.10);
+
+    &.is-hidden{
+        transform:translateY(-100%);
+        transition: all 0.3s ease-in-out;
+     }
+     &.is-visible{
+        background-color: #E37D7D;
+        transform:translateY(0);
+        transition: all 0.3s ease-in-out;
+     }
 }
 
 .navbar-light .navbar-brand {
@@ -129,8 +140,7 @@ body, html {
     }
 
     .hero-image {
-        margin-top: -3rem;
-        //border-bottom: 3px solid $secondary;
+        margin-top: -1rem;
 
         @include media-breakpoint-up(md) {
             margin-top: 0;
@@ -162,9 +172,17 @@ body, html {
 
 .contact-image {
     height: 10rem;
-    background-size: cover;
+    background-size: auto 10rem;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat-x;
+    @include media-breakpoint-up(lg) {
+        background-size: auto 12rem;
+        height: 12rem;
+    }
+    @include media-breakpoint-up(xl) {
+        background-size: auto 14rem;
+        height: 14rem;
+    }
 }
 
 .team-section {
@@ -195,12 +213,11 @@ body, html {
 .team-member-image {
     width: 8rem;
     height: 8rem;
-    border-radius: 4px;
+    border-radius: $border-radius-lg;
 }
 
 .team-member-title {
     margin-bottom: .25rem;
-    //font-weight: 600;
 }
 
 .team-member-bio {
@@ -229,7 +246,7 @@ $color-dark: rgba($primary, 0.07);
     } 
 
     .announcement-banner {
-        border-radius: 6px;
+        border-radius: $border-radius-lg;
         background-color: $secondary;
         color: $dark;
         box-shadow: $h1 $v1 $blur1 $color-dark, 
@@ -248,7 +265,7 @@ $color-dark: rgba($primary, 0.07);
 // FEATURES
 
 .features-section {
-    padding: 5rem 0;
+    padding: 5rem 0 3rem;
     background-color: $light;
     color: $primary;
 }
@@ -293,6 +310,7 @@ $color-dark: rgba($primary, 0.07);
 
 .feature-set {
     @extend .row;
+    margin-bottom: 4rem;
 }
 
 .features {
@@ -300,6 +318,9 @@ $color-dark: rgba($primary, 0.07);
         @extend .col-12;
         @extend .col-sm-7;
         @extend .col-md-5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .feature-image {
         @extend .col-8;
@@ -307,6 +328,13 @@ $color-dark: rgba($primary, 0.07);
         @extend .offset-1;
         @extend .offset-sm-0;
         margin-bottom: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        //background-color: $secondary;
+        @include media-breakpoint-up(sm) {
+            margin-bottom: 0;
+        } 
     }
 }
 
@@ -322,7 +350,9 @@ $color-dark: rgba($primary, 0.07);
         }
 
         .feature-content {
-            text-align: right;
+            @include media-breakpoint-up(sm) {
+                text-align: right;
+            } 
         }
     }
 
@@ -330,7 +360,7 @@ $color-dark: rgba($primary, 0.07);
 
 .testimonials-section {
     padding: 5rem 0;
-    background-color: $light;
+    background-color: $medium;
     color: $primary;
 }
 
@@ -345,13 +375,13 @@ $color-dark: rgba($primary, 0.07);
         img {
             width: 8rem;
             height: 8rem;
-            border-radius: 4px;
+            border-radius: $border-radius-lg;
             margin: 0 1rem .5rem 0;
         }
     }
 
     .carousel{
-        padding-top: 2rem;
+        padding-top: 1rem;
     }
 }
 
@@ -361,11 +391,11 @@ $color-dark: rgba($primary, 0.07);
     padding: 1.25rem 1.75rem .75rem;
     margin-bottom: 1rem;
     margin-left: 1.5rem;
-    border-radius: 6px;
+    border-radius: $border-radius-lg;
     font-size: 1rem;
     background-color: $secondary;
-    box-shadow: $h1 $v1 $blur1 #eeeeee, 
-    $h2 $v2 $blur2 #fafafa;
+    box-shadow: $h1 $v1 $blur1 #cbc7c1, 
+    $h2 $v2 $blur2 #e7e7de;
 
     &:before, &:after {
         position: absolute;
@@ -407,11 +437,15 @@ $color-dark: rgba($primary, 0.07);
 
 .carousel-indicators {
     bottom: -4rem;
+
+    .active {
+        background-color: $primary;
+    }
 }
 
 .carousel-control-next-icon, .carousel-control-prev-icon {
     padding: 1.25rem;
-    border-radius: 8px;
+    border-radius: $border-radius-lg;
     background-size: 50%;
 }
 

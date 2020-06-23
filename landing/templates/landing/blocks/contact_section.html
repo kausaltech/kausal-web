@@ -2,7 +2,7 @@
 
 <section class="contact-section" id="{{ value.in_navigation | slugify }}">
     {% if value.section_image %}
-        {% image value.section_image fill-1920x640 as tmp_img %}
+        {% image value.section_image original as tmp_img %}
         <div class="contact-image" style="background-image: url('{{ tmp_img.url }}')">
         </div>
     {% endif%}
