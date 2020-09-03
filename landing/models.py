@@ -1,11 +1,13 @@
 from django.db import models
 
+from django.db.models import CharField
 from wagtail.core.models import Page
 from wagtailtrans.models import TranslatablePage
-from wagtail.core.fields import StreamField
+from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.edit_handlers import ImageChooserPanel
 
 class LandingPage(TranslatablePage):
     body = StreamField([
@@ -125,3 +127,39 @@ class LandingPage(TranslatablePage):
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
     ]
+
+class calendyPage(TranslatablePage):
+
+    # Database fields
+
+    cta_text = CharField(
+        max_length=255,
+        help_text="Call to action on button")
+    blurb = RichTextField()
+    body = RichTextField()
+    main_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    calendy_link = CharField(max_length=255)
+
+    # Editor panels configuration
+
+    content_panels = Page.content_panels + [
+        FieldPanel('blurb', classname="full"),
+        FieldPanel('body', classname="full"),
+        ImageChooserPanel('main_image'),
+        FieldPanel('calendy_link', classname="full"),
+    ]
+
+    promote_panels = Page.promote_panels + [
+        FieldPanel('cta_text', classname="full"),
+    ]
+
+    # Parent page / subpage type rules
+
+    parent_page_types = ['landing.LandingPage']
+    subpage_types = []

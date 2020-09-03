@@ -1,9 +1,9 @@
-{% load static wagtailuserbar wagtailtrans_tags wagtailcore_tags sass_tags i18n %}
+{% load static wagtailuserbar wagtailtrans_tags wagtailcore_tags sass_tags wagtailimages_tags i18n %}
 
 {% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
-<html class="no-js" lang="{{ LANGUAGE_CODE }}">
+<html class="no-js bg-secondary" lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -44,57 +44,37 @@
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
-        <script
+<script
 			  src="https://code.jquery.com/jquery-3.4.1.min.js"
 			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 			  crossorigin="anonymous"></script>
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %} bg-secondary">
         {% wagtailuserbar 'bottom-left' %}
+        <div class="container-fluid">
 
-        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light py-3 is-hideable">
-            <div class="container">
-                <a class="navbar-brand" href="/">Kausal</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-                        {% for block in page.body %}
-                            {% if block.value.in_navigation %}
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#{{ block.value.in_navigation | slugify }}">{{ block.value.in_navigation }}</a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                    <div class="d-flex justify-content-between justify-content-md-end align-items-start">
-                        <div class="order-md-1">{% render_language_selector page %}</div>
-                        {% for calendy in self.get_children.specific %}
-                            {% if calendy.content_type.name == "calendy page" %}
-                                <a href="{% pageurl calendy %}" class="btn btn-secondary mr-3 order-md-0">{{ calendy.cta_text }}</a>
-                            {% endif %}
-                        {% endfor %}
+        </div>
+        <div class="container my-5">
+            <a class="btn btn-outline-primary mb-5" href="/">Back</a>
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-4 mb-2 text-primary">
+                            {% image page.main_image width-600 class="img-fluid px-3 mb-3" %}
+                            <h1 class="mb-4">{% include_block page.title %}</h1>
+                            <div class="lead font-weight-bold">
+                                {% include_block page.blurb %}
+                            </div>
+                            <p>{% include_block page.body %}</p>
+                        </div>
+                        <div class="col-xs-12 col-lg-8">
+                            <!-- Calendly inline widget begin -->
+                            <div class="calendly-inline-widget" data-url="{{ page.calendy_link }}?text_color=302d2b&primary_color=274e13" style="min-width:320px;height:630px;"></div>
+                            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+                            <!-- Calendly inline widget end -->
+                        </div>
                     </div>
-                </div>
-            </div>
-        </nav>
-        {% include_block page.body %}
-        <footer class="site-footer">
-            <div class="container">
-                <p>Kausal Oy 2020</p>
-            </div>
-        </footer>
-        <a  id="back-to-top"
-            href="#"
-            class="btn btn-light btn-lg back-to-top"
-            role="button" title="Click to return on the top page">
-            <svg class="bi bi-chevron-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L8 5.707l-5.646 5.647a.5.5 0 01-.708-.708l6-6z" clip-rule="evenodd"/>
-            </svg>
-        </a>
 
+        </div>
         {# Global javascript #}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
