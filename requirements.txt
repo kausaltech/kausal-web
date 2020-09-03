@@ -15,7 +15,7 @@ django-modelcluster==5.0.1  # via wagtail
 django-sass-processor==0.8  # via -r requirements.in
 django-taggit==1.2.0      # via wagtail
 django-treebeard==4.3.1   # via wagtail
-django==3.0.5             # via django-appconf, django-taggit, django-treebeard, djangorestframework, wagtail
+django==3.0.7             # via django-appconf, django-taggit, django-treebeard, djangorestframework, wagtail
 djangorestframework==3.11.0  # via wagtail
 draftjs-exporter==2.1.7   # via wagtail
 html5lib==1.0.1           # via wagtail
