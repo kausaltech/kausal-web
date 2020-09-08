@@ -6,16 +6,8 @@
 <html class="no-js" lang="{{ LANGUAGE_CODE }}">
     <head>
         <meta charset="utf-8" />
-        <title>
-            {% block title %}
-                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
-            {% endblock %}
-            {% block title_suffix %}
-                {% with self.get_site.site_name as site_name %}
-                    {% if site_name %}- {{ site_name }}{% endif %}
-                {% endwith %}
-            {% endblock %}
-        </title>
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% with self.get_site.site_name as site_name %}{% if site_name %} – {{ site_name }}{% endif %}{% endwith %}{% endblock %}</title>
+        <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% else %}{{ self.seo_title|default:self.title }}{% endif %}" />
 
         <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
         <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
@@ -26,7 +18,7 @@
         <meta name="msapplication-TileColor" content="#4d6a52">
         <meta name="msapplication-config" content="{% static 'icons/browserconfig.xml' %}">
         <meta name="theme-color" content="#d9ead3">
-        
+
         <meta name="description" content="{{ self.search_description }}" />
         <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
         <meta property="og:description" content="{{ self.search_description }}" />
