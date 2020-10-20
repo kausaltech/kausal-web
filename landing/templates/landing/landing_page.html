@@ -60,6 +60,15 @@
                                 </li>
                             {% endif %}
                         {% endfor %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://medium.com/kausaltech/{{ LANGUAGE_CODE }}/home">
+                                {% if LANGUAGE_CODE == "fi" %}
+                                    Blogi
+                                {% else %}
+                                    Blog
+                                {% endif %}
+                            </a>
+                        </li>
                     </ul>
                     <div class="d-flex justify-content-between justify-content-md-end align-items-start">
                         <div class="order-md-1">{% render_language_selector page %}</div>
