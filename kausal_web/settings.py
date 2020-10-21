@@ -12,8 +12,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import environ
 
+import environ
+import sentry_sdk  # noqa
+from sentry_sdk.integrations.django import DjangoIntegration  # noqa
 
 PROJECT_DIR = environ.Path(__file__) - 1
 BASE_DIR = PROJECT_DIR - 1
@@ -39,6 +41,8 @@ env = environ.Env(
     MAILGUN_API_KEY=(str, ''),
     MAILGUN_SENDER_DOMAIN=(str, ''),
     MAILGUN_REGION=(str, ''),
+    MATOMO_HOST=(str, ''),
+    MATOMO_SITE_ID=(str, ''),
 )
 
 
@@ -125,6 +129,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'kausal_web.context_processors.matomo',
             ],
         },
     },
@@ -211,6 +216,8 @@ BASE_URL = env('BASE_URL')
 WAGTAILTRANS_SYNC_TREE = True
 
 SENTRY_DSN = env('SENTRY_DSN')
+MATOMO_HOST = env('MATOMO_HOST')
+MATOMO_SITE_ID = env('MATOMO_SITE_ID')
 
 
 LOGGING = {
@@ -280,8 +287,6 @@ if 'DATABASES' in locals():
         DATABASES['default']['CONN_MAX_AGE'] = 600
 
 
-import sentry_sdk  # noqa
-from sentry_sdk.integrations.django import DjangoIntegration  # noqa
 
 
 sentry_sdk.init(
